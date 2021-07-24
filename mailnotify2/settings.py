@@ -29,7 +29,7 @@ SECRET_KEY = encrypt.getSecretKey()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['evening-peak-06941.herokuapp.com', 'http://127.0.0.1']
+ALLOWED_HOSTS = ['notifyreminder.herokuapp.com', 'http://127.0.0.1']
 
 # Application definition
 
