@@ -8,9 +8,9 @@ class encrypt:
 
     def __init__(self):
         self.secret_key = 'django-insecure-6-zrh@!jkhl$a71*^-vzdf((uuhg%h&e=q(69uss-+wiak2uu)'
-        self.name = 'mailnotify2'
-        self.loginName = 'backendtest'
-        self.password = 'backendsch'
+        self.name = 'empty'
+        self.loginName = 'empty'
+        self.password = 'empty'
 
     def encryptLocal(self, value):
         return encrypt.fernet.encrypt(value.encode())

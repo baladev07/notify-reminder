@@ -81,9 +81,11 @@ WSGI_APPLICATION = 'mailnotify2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': encrypt.getUserName(),
-        'USER': encrypt.getLoginName(),
-        'PASSWORD': encrypt.getPassword()
+        'NAME': 'd5gpk0qa2io2sf',
+        'USER': 'uefjymjzuzvkbz',
+        'PASSWORD': 'dcbe9d556b3ff776f7806c4e9fb76c0195c63b9b497dc4caf85cb9419db78c9e',
+        'HOST':'ec2-52-202-152-4.compute-1.amazonaws.com:5432',
+        'PORT':'5432'
     }
 }
 
