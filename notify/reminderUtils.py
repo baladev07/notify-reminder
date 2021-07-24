@@ -113,7 +113,7 @@ def getUserReminderDetails(username, reminders=[]):
         reminderObject = reminderdetails.objects.all().filter(username=username)
         serializerRes = reminderdetailsSerializer(instance=reminderObject, many=True)
         # reminders.append(serializerRes.data)
-        return Response({"result": serializerRes.data}, status=200)
+        return {"result": serializerRes.data}
     except reminderdetails.DoesNotExist:
         return {'message': 'There are no reminders.'}
 

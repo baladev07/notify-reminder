@@ -26,29 +26,33 @@ def userMethod(request):
 
 @api_view(['POST', 'GET'])
 def addReminder(request):
-    reminder = reminderUtils.reminder()
-    username = request.query_params['username']
-    if users.isValid(username):
-        if request.method == 'POST':
-            reminder.username = username
-            reminder.reminderDate = request.data['remindondate']
-            reminder.reminderTime = request.data['remindontime']
-            reminder.remindTo = request.data['remindto']
-            reminder.reminderSub = request.data['remindersub']
-            reminder.reminderBody = request.data['reminderbody']
-            reminder_validation = reminder.reminderValidation()
-            if not reminder_validation:
-                try:
-                    isCreated = reminderUtils.createReminder(reminder.reminderMapping(), request)
-                except Exception as e:
-                    raise APIException(e, 500)
-                return Response(isCreated, status=201)
-            else:
-                return reminder_validation
-        if request.method == 'GET':
-            return Response(reminderUtils.getUserReminderDetails(username), status=200)
-    else:
-        return Response({'message': "user does not exists"}, status=400)
+    try:
+        reminder = reminderUtils.reminder()
+        username = request.query_params['username']
+        if users.isValid(username):
+            if request.method == 'POST':
+                reminder.username = username
+                reminder.reminderDate = request.data['remindondate']
+                reminder.reminderTime = request.data['remindontime']
+                reminder.remindTo = request.data['remindto']
+                reminder.reminderSub = request.data['remindersub']
+                reminder.reminderBody = request.data['reminderbody']
+                reminder_validation = reminder.reminderValidation()
+                if not reminder_validation:
+                    try:
+                        isCreated = reminderUtils.createReminder(reminder.reminderMapping(), request)
+                    except Exception as e:
+                        raise APIException(e, 500)
+                    return Response(isCreated, status=201)
+                else:
+                    return reminder_validation
+            if request.method == 'GET':
+                return Response(reminderUtils.getUserReminderDetails(username), status=200)
+        else:
+            return Response({'message': "user does not exists"}, status=400)
+    except Exception as e:
+        raise APIException(e, 500)
+
 
 
 @api_view(['PUT', 'DELETE', 'GET'])
