@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from . import users, reminderUtils
+from . import users, reminderUtils, run_task
 from rest_framework.exceptions import APIException
 
 
@@ -103,3 +103,9 @@ def updateUSer(request, pk):
 @api_view(['GET'])
 def usersList(request):
     return Response({'user': users.getUsersList()}, status=200)
+
+
+@api_view(['GET'])
+def start(request):
+    run_task.start()
+    return Response("success")
