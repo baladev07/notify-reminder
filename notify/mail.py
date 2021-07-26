@@ -3,12 +3,12 @@ import smtplib
 from background_task import background
 from email.message import EmailMessage
 
-Email_address = 'notifyreminder@gmail.com'
-Email_passwd = 'notify_07'
 
 
 @background(schedule=60)
 def sendMail(reminder_map, to_adr):
+    Email_address = 'notifyreminder@gmail.com'
+    Email_passwd = 'notify_07'
     msg = EmailMessage()
     msg['subject'] = reminder_map['remindersub']
     msg['From'] = Email_address
