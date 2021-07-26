@@ -102,7 +102,7 @@ def createUser(user_map):
     serializedRes = userdetailsSerializer(data=user_map)
     if serializedRes.is_valid():
         serializedRes.save()
-        return Response({"message": "user added successfully"}, status=201)
+        return Response({"message": "User added successfully"}, status=201)
     return Response({"message": "internal error"}, status=500)
 
 
@@ -122,7 +122,7 @@ def updateUser(user_map, user_id):
     serializedRes = userdetailsSerializer(instance=user_obj, data=user_map)
     if serializedRes.is_valid():
         serializedRes.save()
-        return Response({"message": "user updated successfully"}, status=201)
+        return Response({"message": "User updated successfully"}, status=201)
     return Response({"message": "internal error"}, status=500)
 
 
