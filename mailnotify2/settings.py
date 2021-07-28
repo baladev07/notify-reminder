@@ -12,12 +12,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-from mailnotify2 import encrpt
+from mailnotify2 import utils
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import django
-
-encrypt = encrpt.encrypt()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = encrypt.getSecretKey()
+SECRET_KEY = utils.getSecretKey()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['notifyreminder.herokuapp.com', 'http://127.0.0.1']
+ALLOWED_HOSTS = utils.getAllowedHosts()
 
 # Application definition
 
@@ -81,11 +79,11 @@ WSGI_APPLICATION = 'mailnotify2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd5gpk0qa2io2sf',
-        'USER': 'uefjymjzuzvkbz',
-        'PASSWORD': 'dcbe9d556b3ff776f7806c4e9fb76c0195c63b9b497dc4caf85cb9419db78c9e',
-        'HOST':'ec2-52-202-152-4.compute-1.amazonaws.com',
-        'PORT':'5432'
+        'NAME': utils.getName(),
+        'USER': utils.getLoginName(),
+        'PASSWORD': utils.getPassword(),
+        'HOST': utils.getHostName(),
+        'PORT': utils.getPort()
     }
 }
 

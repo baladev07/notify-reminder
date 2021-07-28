@@ -7,8 +7,9 @@ from email.message import EmailMessage
 
 @background(schedule=60)
 def sendMail(reminder_map, to_adr):
-    Email_address = 'notifyreminder@gmail.com'
-    Email_passwd = 'notify_07'
+    from mailnotify2 import utils
+    Email_address = utils.getEmail()
+    Email_passwd = utils.getEmailPassword()
     msg = EmailMessage()
     msg['subject'] = reminder_map['remindersub']
     msg['From'] = Email_address
