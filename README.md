@@ -12,7 +12,7 @@ The Django Email Scheduler is a web application built using Django and Django RE
 # Usage
 
 Schedule an Email
-To schedule an email, send a POST request to the /reminder endpoint with the following parameters:
+To schedule an email, send a `POST` request to the `/reminder` endpoint with the following parameters:
 
 ```json
 {
@@ -22,10 +22,10 @@ To schedule an email, send a POST request to the /reminder endpoint with the fol
     "scheduled_time": "2023-04-20T12:00:00Z"
 }
 ```
-to: The email address of the recipient.
-subject: The subject of the email.
-body: The body of the email.
-scheduled_time: The time at which the email should be sent. The format of the time should be in ISO 8601 format.
+- `remindTo`: The email address of the recipient.
+- `reminderSubject`: The subject of the email.
+- `reminderBody`: The body of the email.
+- `scheduled_time`: The time at which the email should be sent. The format of the time should be in ISO 8601 format.
 The response will contain the ID of the scheduled email.
 
 ```json
@@ -38,7 +38,7 @@ The response will contain the ID of the scheduled email.
 }
 ```
 # Cancel a Scheduled Email
-To cancel a scheduled email, send a DELETE request to the /reminder/{id}/ endpoint, where id is the ID of the email you want to cancel.
+To cancel a scheduled email, send a `DELETE` request to the `/reminder/{id}/` endpoint, where id is the ID of the email you want to cancel.
 
 Contributions are welcome! If you find any bugs or want to suggest new features, please open an issue or submit a pull request.
 
